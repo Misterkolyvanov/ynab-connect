@@ -30,6 +30,11 @@ class Balancer extends Command
             print 'Offset: '.$user->offset_budgeted.PHP_EOL;
 
             $offset         = $user->offset_budgeted;
+
+            if(empty($user->configuration) || !$user->configuration){
+                print 'Skipping user, no config loaded: '.PHP_EOL;
+                continue;
+            }
             $configuration  = json_decode(Crypt::decrypt($user->configuration));
 
             if(!count($configuration)){
