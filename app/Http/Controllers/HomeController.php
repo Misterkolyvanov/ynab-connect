@@ -28,7 +28,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-
         $auth           = Auth::user();
         $configuration  = ($auth->configuration)? json_decode(Crypt::decrypt($auth->configuration)) : [];
 
@@ -93,7 +92,7 @@ class HomeController extends Controller
 
     public function async_system_status(){
 
-        //$auth = Auth::user();
+        $auth = Auth::user();
 
         $habitica       = new HabiticaAPI();
         $ynab           = new YnabAPI();
@@ -101,9 +100,13 @@ class HomeController extends Controller
         $habitica_user   = $habitica->user();
         $ynab_user       = $ynab->user();
 
+        $configuration  = ($auth->configuration)? json_decode(Crypt::decrypt($auth->configuration)) : [];
+
         return view("parts.system_status_details", [
             'habitica_user'     => $habitica_user,
             'ynab_user'         => $ynab_user,
+            'user'              => $auth,
+            'configuration'     => $configuration
         ]);
     }
 

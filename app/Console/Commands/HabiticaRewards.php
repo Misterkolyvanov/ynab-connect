@@ -142,6 +142,12 @@ class HabiticaRewards extends Command
             }
 
             $user->habitica_payout_checkpoint = date("Y-m-d H:i:s");
+
+            //Check if its the first of the month, if so, we need to zero out the payout
+            if(date("d H:i") == "01 00:00:00"){
+                $user->habitica_payout_amt;
+            }
+
             $user->save();
 
             //Check what the current budget is

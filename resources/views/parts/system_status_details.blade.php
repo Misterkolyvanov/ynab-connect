@@ -1,5 +1,8 @@
 <div class="col-sm-12">
-    <h4 class="info-text"> Connection Status</h4>
+    <h4 class="info-text"> Connection Status
+
+        <span class="float-right">Payout: $@if($user->habitica_payout_amt){{ number_format($user->habitica_payout_amt / 1000) }}@else0.00@endif</span>
+    </h4>
 </div>
 
 <div class="col-sm-12">
@@ -22,10 +25,10 @@
         </div>
     </div>
     <div class="col-sm-4">
-        <div class="choice" data-toggle="wizard-checkbox">
+        <div class="choice @if(!empty($configuration) && $configuration->habitica_reward_amt) active @endif" data-toggle="wizard-checkbox">
             <input type="checkbox" value="Code" checked="checked">
             <div class="icon">
-                <i class="fa fa-times"></i>
+                <i class="fa @if(!empty($configuration) && $configuration->habitica_reward_amt) fa-check @else fa-times @endif"></i>
             </div>
             <h6>Run</h6>
         </div>
