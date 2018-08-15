@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-
+        Commands\Balancer::class,
+        Commands\HabiticaRewards::class
     ];
 
     /**
@@ -24,8 +25,14 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('habitica:rewards')
+            ->everyTenMinutes()
+            ->withoutOverlapping();
+
+        $schedule->command('balancer:run')
+            ->daily()
+            ->evenInMaintenanceMode()
+            ->withoutOverlapping();
     }
 
     /**
