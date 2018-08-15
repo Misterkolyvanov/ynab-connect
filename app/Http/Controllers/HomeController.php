@@ -27,8 +27,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $auth = Auth::user();
-
+        $auth           = Auth::user();
         $configuration  = ($auth->configuration)? json_decode(Crypt::decrypt($auth->configuration)) : [];
 
         $habitica       = new HabiticaAPI();
@@ -46,9 +45,12 @@ class HomeController extends Controller
 
     public function store_configuration(Request $request){
 
-        $u = Auth::user();
+        $u              = Auth::user();
+        $config_current = false;
 
-        $config_current = json_decode($u->configuration, true);
+        if(!empty($u->configuration) && $u->configuration){
+            $config_current = json_decode(Crypt::decrypt($u->configuration), true);
+        }
 
         if(is_array($config_current)){
             $new_config = array_merge($config_current, $request->toArray());
@@ -56,7 +58,7 @@ class HomeController extends Controller
             $new_config = $request->toArray();
         }
 
-        $u->configuration = \Crypt::encrypt(json_encode($new_config));
+        $u->configuration = Crypt::encrypt(json_encode($new_config));
         $u->save();
 
         return response()->json(["response"=>"SUCCESS"]);

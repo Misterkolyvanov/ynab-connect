@@ -48,9 +48,14 @@
                                     </span>
                                     <div class="form-group label-floating">
                                         <label class="control-label">YNAB Personal Access Token</label>
-                                        <input name="ynab_token" type="text" class="form-control" value="{{ $configuration->ynab_token or '' }}">
+                                        <input name="ynab_token" id="ynab-pa-token" type="text" class="form-control" value="{{ $configuration->ynab_token or '' }}">
                                     </div>
                                 </div>
+
+                                <button type="button" class="btn btn-default" id="ynab-pa-token-test-btn">
+                                    <i class="material-icons">swap_horiz</i> Test Token
+                                </button>
+                                <p class="alert alert-warning" id="ynab-pa-test-result">Run a test to see if you can connect to YNAB</p>
                             </div>
 
                             <div class="col-sm-12">
@@ -76,7 +81,7 @@
                                     </span>
                                     <div class="form-group label-floating">
                                         <label class="control-label">Habitica User ID</label>
-                                        <input name="habitica_user_id" type="text" class="form-control" value="{{ $configuration->habitica_user_id or '' }}">
+                                        <input name="habitica_user_id" id="habitica_user_id" type="text" class="form-control" value="{{ $configuration->habitica_user_id or '' }}">
                                     </div>
                                 </div>
 
@@ -86,9 +91,13 @@
                                     </span>
                                     <div class="form-group label-floating">
                                         <label class="control-label">Habitica Key</label>
-                                        <input name="habitica_user_key" type="text" class="form-control" value="{{ $configuration->habitica_user_key or '' }}">
+                                        <input name="habitica_user_key" id="habitica_user_key" type="text" class="form-control" value="{{ $configuration->habitica_user_key or '' }}">
                                     </div>
                                 </div>
+
+                                <button type="button" class="btn btn-default" id="habitica-access-test-btn">
+                                    <i class="material-icons">swap_horiz</i> Test API Access
+                                </button>
                             </div>
 
 
@@ -98,6 +107,11 @@
                                     <li> Go to Settings, then API, and click on “Show API Token”</li>
                                     <li> Now copy over the User ID # and the API Token # (both look like long strings of numbers and letters)</li>
                                 </ol>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p class="alert alert-warning" id="habitica-access-test-result">Run a test to see if you can connect to Habitica</p>
                             </div>
                         </div>
                     </div>

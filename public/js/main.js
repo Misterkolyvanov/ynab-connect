@@ -47,7 +47,54 @@ $(function(){
     });
 
 
+    $(document).on("click", "#ynab-pa-token-test-btn", function(){
+        var t  = $("#ynab-pa-token").val();
+        var $r = $("#ynab-pa-test-result");
 
+        if(!t){
+            $r.html("Please input a token, you can get this here: <a href='https://ynab.com/api' target='_blank'>https://ynab.com/api</a>");
+        }else{
+            $.get("/api-test/ynab/"+t, function (response) {
+                if(response.result == "SUCCESS"){
+                    $r.html("Connection Successful!");
+                    $r.addClass("alert-success");
+                    $r.removeClass("alert-warning");
+                    $r.removeClass("alert-danger");
+                    save_configuration(false);
+                }else{
+                    $r.addClass("alert-danger");
+                    $r.removeClass("alert-warning");
+                    $r.removeClass("alert-success");
+                    $r.html("Connection Failed!");
+                }
+            });
+        }
+    });
+
+    $(document).on("click", "#habitica-access-test-btn", function(){
+        var u  = $("#habitica_user_id").val();
+        var k  = $("#habitica_user_key").val();
+        var $r = $("#habitica-access-test-result");
+
+        if(!u || !k){
+            $r.html("Please input a user id and user key, you can get this here: <a href='https://habitica.com/api' target='_blank'>https://habitica.com/api</a>");
+        }else{
+            $.get("/api-test/habitica/"+u+','+k, function (response) {
+                if(response.result == "SUCCESS"){
+                    $r.html("Connection Successful!");
+                    $r.addClass("alert-success");
+                    $r.removeClass("alert-warning");
+                    $r.removeClass("alert-danger");
+                    save_configuration(false);
+                }else{
+                    $r.addClass("alert-danger");
+                    $r.removeClass("alert-warning");
+                    $r.removeClass("alert-success");
+                    $r.html("Connection Failed!");
+                }
+            });
+        }
+    });
 
 
 });

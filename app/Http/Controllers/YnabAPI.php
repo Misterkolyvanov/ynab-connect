@@ -50,6 +50,34 @@ class YnabAPI extends Controller
         return true;
     }
 
+    public function api_test($token){
+
+        if(!$token){
+            return response()->json(["result"=>"FAILED"]);
+        }
+
+        try
+        {
+            $httpClient  = new Client();
+            $httpResponse = $httpClient->request('GET','https://api.youneedabudget.com/v1/user',[
+                'headers' => [
+                    'Accept' => 'application/json',
+                    'cache-control' => 'no-cache',
+                    'authorization' => 'Bearer '.$token
+                ]
+            ]);
+            //get api response code
+            $responseCode = $httpResponse->getStatusCode();
+            if($responseCode == 200) {
+                return response()->json(["result"=>"SUCCESS"]);
+            }
+        }
+        catch (ClientException $e){
+            return response()->json(["result"=>"FAILED"]);
+        }
+        return response()->json(["result"=>"FAILED"]);
+    }
+
     public function user(){
 
         $cache = Session::get("YNAB_USER");
