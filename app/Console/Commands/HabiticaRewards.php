@@ -139,6 +139,11 @@ class HabiticaRewards extends Command
                 continue;
             }
 
+            if(!floor($credit)){
+                print '0 values are ignored .. skipping '.PHP_EOL;
+                continue;
+            }
+
             $ynab->postTransaction( $configuration->ynab_default_account,
                 $configuration->ynab_default_budget,
                 $configuration->ynab_default_category,

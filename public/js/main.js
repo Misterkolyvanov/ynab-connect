@@ -98,6 +98,7 @@ $(function(){
     });
 
     $(document).on("click", "#run-program", function(){
+        $(this).replaceWith("<span>Now Running ...</span>");
         $.get("/run-program");
     });
 
