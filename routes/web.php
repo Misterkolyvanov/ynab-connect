@@ -32,6 +32,8 @@ Route::get('/get-async/system-content', 'HomeController@async_system_status');
 Route::get("/api-test/habitica/{user_key}", 'HabiticaAPI@api_test');
 Route::get("/api-test/ynab/{token}", 'YnabAPI@api_test');
 
+Route::get("/run-program", 'HomeController@async_init_run');
+
 
 Route::post('/user/configuration', 'HomeController@store_configuration');
 

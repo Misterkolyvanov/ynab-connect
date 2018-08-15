@@ -20,12 +20,17 @@ class HabiticaRewards extends Command
         parent::__construct();
     }
 
-    public function handle()
+    public function handle($user_id=false)
     {
         print "Running Habitica Rewards".PHP_EOL;
 
         $users = User::all();
         foreach ($users as $user){
+
+            if($user_id && $user_id != $user->id){
+                continue;
+            }
+
             print 'Checking: '. $user->name.PHP_EOL;
 
             if(empty($user->configuration) || !$user->configuration){

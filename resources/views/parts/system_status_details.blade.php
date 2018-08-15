@@ -31,3 +31,11 @@
         </div>
     </div>
 </div>
+
+<div class="col-sm-12" style="text-align: center">
+    <button type="button">Manually Run Program</button>
+    <p class="alert alert-info">Typically the program will run every 10 minutes and award your YNAB category selected.
+    Additionally,  your "Budgeted" amount will be balanced nightly, meaning you'r a negative transaction will offset your
+    set budget. This process is called "balancing", the Balancer negatively offsets your budget, so that you can earn it
+    back completing tasks in Habitica. Learn more here: <a href="/how-it-works">How it works ></a> </p>
+</div>

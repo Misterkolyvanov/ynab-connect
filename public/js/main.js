@@ -43,6 +43,7 @@ $(function(){
     $(document).on("submit", "#save_user_configuration", function(e){
         e.preventDefault();
           save_configuration(true);
+          $.get("/run-program");
         return false;
     });
 
@@ -94,6 +95,10 @@ $(function(){
                 }
             });
         }
+    });
+
+    $(document).on("click", "#run-program", function(){
+        $.get("/run-program");
     });
 
 

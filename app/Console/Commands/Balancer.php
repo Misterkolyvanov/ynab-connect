@@ -19,12 +19,17 @@ class Balancer extends Command
         parent::__construct();
     }
 
-    public function handle()
+    public function handle($user_id=false)
     {
         print "Running Balancer".PHP_EOL;
 
         $users = User::all();
         foreach ($users as $user){
+
+            if($user_id && $user_id != $user->id){
+                continue;
+            }
+
             print 'Checking: '. $user->name.PHP_EOL;
 
             print 'Offset: '.$user->offset_budgeted.PHP_EOL;

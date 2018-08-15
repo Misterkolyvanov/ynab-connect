@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Console\Commands\Balancer;
+use App\Console\Commands\HabiticaRewards;
 use App\User;
 use Illuminate\Http\Request;
 use Auth;
@@ -91,7 +93,7 @@ class HomeController extends Controller
 
     public function async_system_status(){
 
-        $auth = Auth::user();
+        //$auth = Auth::user();
 
         $habitica       = new HabiticaAPI();
         $ynab           = new YnabAPI();
@@ -103,5 +105,16 @@ class HomeController extends Controller
             'habitica_user'     => $habitica_user,
             'ynab_user'         => $ynab_user,
         ]);
+    }
+
+    public function async_init_run(){
+
+        $auth = Auth::user();
+
+        $balancer = new Balancer();
+        $rewards  = new HabiticaRewards();
+
+        $balancer->handle($auth->id);
+        $rewards->handle($auth->id);
     }
 }
