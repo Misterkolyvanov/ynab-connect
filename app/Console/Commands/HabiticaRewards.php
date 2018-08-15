@@ -128,9 +128,6 @@ class HabiticaRewards extends Command
                 }
             }
 
-            $user->habitica_payout_checkpoint = date("Y-m-d H:i:s");
-            $user->save();
-
             //Connect to YNAB and give credit
             $ynab = new YnabAPI();
 
@@ -143,6 +140,25 @@ class HabiticaRewards extends Command
                 print '0 values are ignored .. skipping '.PHP_EOL;
                 continue;
             }
+
+            $user->habitica_payout_checkpoint = date("Y-m-d H:i:s");
+            $user->save();
+
+            //Check what the current budget is
+            $ynab_default_category = $ynab->categories( $configuration->ynab_default_budget,
+                $configuration->ynab_default_category
+            );
+
+            //Add current credit to the stored amount
+            $proposed_add = $user->habitica_payout_amt + floor($credit);
+
+            //If the next post is expected to go over budget, then just get what is remaining, and fill it.
+            if($proposed_add >= $ynab_default_category->category->budgeted){
+                $credit = $ynab_default_category->category->budgeted - $user->habitica_payout_amt;
+            }
+
+            //Save locally
+            $user->increment('habitica_payout_amt', floor($credit));
 
             $ynab->postTransaction( $configuration->ynab_default_account,
                 $configuration->ynab_default_budget,
