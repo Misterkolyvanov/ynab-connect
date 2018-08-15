@@ -5,7 +5,7 @@
 
     <!--      Wizard container        -->
     <div class="wizard-container">
-        <div class="card wizard-card" data-color="red" id="wizard">
+        <div class="card wizard-card" data-color="green" id="wizard">
             <form action="/user/configuration" method="post" id="save_user_configuration">
                 <!--        You can switch " data-color="blue" "  with one of the next bright colors: "green", "orange", "red", "purple"             -->
                 @csrf
@@ -131,7 +131,7 @@
 
                             <div class="col-sm-12" id="rw-selector-container">
                                 <div class="col-sm-4">
-                                    <div class="choice active" data-toggle="wizard-radio" rel="tooltip" title="" data-original-title="10 cents per hard task completed rewarded">
+                                    <div class="choice @if(isset($configuration->habitica_reward_amt) && $configuration->habitica_reward_amt == .10) active @endif" data-toggle="wizard-radio" rel="tooltip" title="" data-original-title="10 cents per hard task completed rewarded">
                                         <input type="radio" class="rw-selector" name="habitica_reward_amt" value=".10" @if(isset($configuration->habitica_reward_amt) && $configuration->habitica_reward_amt == .10) checked="checked" @endif>
                                         <div class="icon">
                                             <i class="material-icons">attach_money</i>
@@ -140,7 +140,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
-                                    <div class="choice" data-toggle="wizard-radio" rel="tooltip" title="" data-original-title="25 cents per hard task completed rewarded">
+                                    <div class="choice @if(isset($configuration->habitica_reward_amt) && $configuration->habitica_reward_amt == .25) active @endif" data-toggle="wizard-radio" rel="tooltip" title="" data-original-title="25 cents per hard task completed rewarded">
                                         <input type="radio" class="rw-selector" name="habitica_reward_amt" value=".25" @if(isset($configuration->habitica_reward_amt) && $configuration->habitica_reward_amt == .25) checked="checked" @endif>
                                         <div class="icon">
                                             <i class="material-icons">attach_money</i>
@@ -149,7 +149,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
-                                    <div class="choice" data-toggle="wizard-radio" rel="tooltip" title="" data-original-title="50 cents per hard task completed rewarded">
+                                    <div class="choice @if(isset($configuration->habitica_reward_amt) && $configuration->habitica_reward_amt == .50) active @endif" data-toggle="wizard-radio" rel="tooltip" title="" data-original-title="50 cents per hard task completed rewarded">
                                         <input type="radio" class="rw-selector" name="habitica_reward_amt" value=".50" @if(isset($configuration->habitica_reward_amt) && $configuration->habitica_reward_amt == .50) checked="checked" @endif>
                                         <div class="icon">
                                             <i class="material-icons">attach_money</i>
@@ -184,7 +184,7 @@
                             <div class="col-sm-12">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="subscribe_news_letter">
+                                        <input type="checkbox" name="subscribe_news_letter" @if(isset($configuration->subscribe_news_letter) && $configuration->subscribe_news_letter == 'on') checked="checked" @endif>
                                     </label>
                                     Subscribe to {{ config('app.name', 'Laravel') }} newsletter
                                 </div>

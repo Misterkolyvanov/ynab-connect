@@ -17,7 +17,7 @@ function save_configuration(reload){
         if(result.response == "SUCCESS"){
             load_settings_content();
             if(reload){
-                //window.location.reload();
+                window.location.reload();
             }
         }else{
             alert("There was an issue in saving this config. Either try again or contact us.");

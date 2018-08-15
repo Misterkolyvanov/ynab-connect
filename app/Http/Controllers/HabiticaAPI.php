@@ -99,9 +99,9 @@ class HabiticaAPI extends Controller
         return false;
     }
 
-    public function user_tasks(){
+    public function user_tasks($task_id=false){
 
-        $cache = Session::get("HABITICA USER TASKS");
+        $cache = Session::get("HABITICA USER TASKS $task_id");
 
         if(!empty($cache)){
             return $cache;
@@ -111,10 +111,16 @@ class HabiticaAPI extends Controller
             return false;
         }
 
+        if($task_id){
+            $api = 'tasks/'.$task_id;
+        }else{
+            $api = 'tasks/user';
+        }
+
         try
         {
             $httpClient  = new Client();
-            $httpResponse = $httpClient->request('GET',$this->api_url.'tasks/user',[
+            $httpResponse = $httpClient->request('GET',$this->api_url.$api,[
                 'headers' => [
                     'Accept'        => 'application/json',
                     'cache-control' => 'no-cache',
@@ -128,7 +134,7 @@ class HabiticaAPI extends Controller
             {
                 $json = \GuzzleHttp\json_decode($httpResponse->getBody());
 
-                Session::put("HABITICA USER TASKS", $json->data);
+                Session::put("HABITICA USER TASKS $task_id", $json->data);
 
                 return $json->data;
             }
