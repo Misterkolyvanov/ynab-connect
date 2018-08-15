@@ -32,9 +32,12 @@
     </div>
 </div>
 
-<div class="col-sm-12" style="text-align: center">
-    <button type="button">Manually Run Program</button>
-    <p class="alert alert-info">Typically the program will run every 10 minutes and award your YNAB category selected.
+<div class="col-sm-12" style="text-align: center; margin-top:20px">
+    @if(!empty($ynab_user) && !empty($ynab_user->user) && !empty($habitica_user) && $habitica_user->profile->name)
+        <button type="button" class="btn btn-primary">Manually Run Program</button>
+    @endif
+    <p class="alert alert-info">
+        Typically the program will run every 10 minutes and post transactions to your YNAB account & category selected.
     Additionally,  your "Budgeted" amount will be balanced nightly, meaning you'r a negative transaction will offset your
     set budget. This process is called "balancing", the Balancer negatively offsets your budget, so that you can earn it
     back completing tasks in Habitica. Learn more here: <a href="/how-it-works">How it works ></a> </p>
