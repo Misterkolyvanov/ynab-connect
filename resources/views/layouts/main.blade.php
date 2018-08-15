@@ -32,7 +32,7 @@
                 <img src="{{ asset('img/logo.png') }}">
             </div>
             <div class="brand">
-                {{ config('app.name', 'Laravel') }} Configuration
+                {{ config('app.name', 'Laravel') }}
             </div>
         </div>
     </a>
