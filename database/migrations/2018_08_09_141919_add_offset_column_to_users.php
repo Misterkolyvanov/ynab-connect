@@ -14,7 +14,7 @@ class AddOffsetColumnToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->double('offset_budgeted')->after("configuration");
+            $table->double('offset_budgeted')->after("configuration")->nullable();
         });
     }
 
