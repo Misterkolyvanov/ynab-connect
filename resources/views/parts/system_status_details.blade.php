@@ -1,7 +1,7 @@
 <div class="col-sm-12">
     <h4 class="info-text"> Connection Status
 
-        <span class="float-right">Payout: $@if($user->habitica_payout_amt){{ number_format($user->habitica_payout_amt / 1000) }}@else0.00@endif</span>
+        <span class="float-right">Payout: @if($user->habitica_payout_amt) ${{ number_format($user->habitica_payout_amt / 1000, 2) }} @else $0.00 @endif</span>
     </h4>
 </div>
 
