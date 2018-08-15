@@ -28,6 +28,11 @@ class HabiticaRewards extends Command
         foreach ($users as $user){
             print 'Checking: '. $user->name.PHP_EOL;
 
+            if(empty($user->configuration) || !$user->configuration){
+                print 'Skipping user, no config loaded: '.PHP_EOL;
+                continue;
+            }
+
             $configuration  = json_decode(Crypt::decrypt($user->configuration));
 
             if(!count($configuration)){
