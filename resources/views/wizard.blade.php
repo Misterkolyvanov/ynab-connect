@@ -38,7 +38,8 @@
                     <div class="tab-pane" id="ynab_api">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="info-text"> Let's start with the YNAB API details.</h4>
+                                <h4 class="info-text"> Let's start with the YNAB API details.
+                                    <i class="material-icons" data-toggle="modal" data-target="#what-is-ynab">info</i></h4>
                             </div>
 
                             <div class="col-sm-12">
@@ -70,7 +71,8 @@
                     <div class="tab-pane" id="habitica_api">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="info-text"> Let's start with the Habitica API details.</h4>
+                                <h4 class="info-text"> Let's start with the Habitica API details.
+                                    <i class="material-icons" data-toggle="modal" data-target="#what-is-habitica">info</i></h4>
                             </div>
 
 
@@ -118,7 +120,8 @@
                     <div class="tab-pane" id="settings">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="info-text"> Select Your Active YNAB Budget, Account, and Category</h4>
+                                <h4 class="info-text"> Select Your Active YNAB Budget, Account, and Category
+                                    </h4>
                             </div>
 
                             <div class="col-sm-6" id="setting_content" style="text-align: center">
@@ -210,4 +213,46 @@
             </form>
         </div>
     </div> <!-- wizard container -->
+
+
+    <!-- What is Habitica Modal -->
+    <div class="modal fade" id="what-is-habitica" tabindex="-1" role="dialog" aria-labelledby="what-is-habitica" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="oneLabel">What is Habitica</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Habitica is a free habit and productivity app that treats your real life like a game.
+                        Habitica can help you achieve your goals to become healthy and happy.</p>
+
+                    <a href="https://habitica.com/" target="_blank">Sign up for Habitica, if you haven't already!</a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- What is YNAB Modal -->
+    <div class="modal fade" id="what-is-ynab" tabindex="-1" role="dialog" aria-labelledby="what-is-ynab" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="oneLabel">What is YNAB</h5>
+                </div>
+                <div class="modal-body">
+                    <p>You Need a Budget (YNAB) is a multi-platform personal budgeting program
+                        based on the envelope method.</p>
+
+                    <a href="https://ynab.com/" target="_blank">Sign up for YNAB, if you haven't already!</a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection

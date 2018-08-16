@@ -53,7 +53,7 @@ $(function(){
         var $r = $("#ynab-pa-test-result");
 
         if(!t){
-            $r.html("Please input a token, you can get this here: <a href='https://ynab.com/api' target='_blank'>https://ynab.com/api</a>");
+            $r.html("Please input a token, you can get this here: <a href='https://app.youneedabudget.com/settings/developer' target='_blank'>https://app.youneedabudget.com/settings/developer</a>");
         }else{
             $.get("/api-test/ynab/"+t, function (response) {
                 if(response.result == "SUCCESS"){
@@ -78,7 +78,7 @@ $(function(){
         var $r = $("#habitica-access-test-result");
 
         if(!u || !k){
-            $r.html("Please input a user id and user key, you can get this here: <a href='https://habitica.com/api' target='_blank'>https://habitica.com/api</a>");
+            $r.html("Please input a user id and user key, you can get this here: <a href='https://habitica.com/user/settings/api' target='_blank'>https://habitica.com/user/settings/api</a>");
         }else{
             $.get("/api-test/habitica/"+u+','+k, function (response) {
                 if(response.result == "SUCCESS"){
