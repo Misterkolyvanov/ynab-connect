@@ -24,7 +24,7 @@
 </head>
 
 <body>
-<div class="image-container set-full-height" style="background-image: url('https://www.rytsar.io/website/img/CRM-PM-User-1.jpg')">
+<div class="image-container set-full-height" style="background-image: url('{{ asset('img/rytsar_projects.jpg') }}')">
     <!--   Creative Tim Branding   -->
     <a href="http://creative-tim.com">
         <div class="logo-container">
