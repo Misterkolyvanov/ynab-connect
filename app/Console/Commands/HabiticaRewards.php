@@ -167,7 +167,8 @@ class HabiticaRewards extends Command
             }
 
             //Save locally
-            $user->increment('habitica_payout_amt', floor($credit));
+            $user->habitica_payout_amt = ($user->habitica_payout_amt + floor($credit));
+            $user->save();
 
             if(env("APP_ENV") == "local"){
                 print_r([$configuration->ynab_default_account,

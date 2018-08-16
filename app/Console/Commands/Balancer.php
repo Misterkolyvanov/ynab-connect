@@ -70,6 +70,9 @@ class Balancer extends Command
 
             print "Need to offset by ".$offset_required.PHP_EOL;
 
+            $user->offset_budgeted = ($user->offset_budgeted + $offset_required);
+            $user->save();
+
             if(env("APP_ENV") == "local"){
                 print_r([$configuration->ynab_default_account,
                     $configuration->ynab_default_budget,
@@ -84,7 +87,6 @@ class Balancer extends Command
             }
 
 
-            $user->increment('offset_budgeted', $offset_required);
         }
     }
 }
