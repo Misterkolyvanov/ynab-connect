@@ -7,6 +7,8 @@ use App\Http\Controllers\YnabAPI;
 use App\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Session;
+
 
 class Balancer extends Command
 {
@@ -22,6 +24,8 @@ class Balancer extends Command
     public function handle($user_id=false)
     {
         print "Running Balancer".PHP_EOL;
+
+        Session::put("IS_CRON_RUNNING", true);
 
         $users = User::all();
         foreach ($users as $user){

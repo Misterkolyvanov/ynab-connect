@@ -81,8 +81,9 @@ class YnabAPI extends Controller
     public function user(){
 
         $cache = Session::get("YNAB_USER");
+        $is_cron = Session::get("IS_CRON_RUNNING");
 
-        if(!empty($cache)){
+        if(!empty($cache) & empty($is_cron)){
             return $cache;
         }
 
@@ -123,8 +124,9 @@ class YnabAPI extends Controller
     public function budgets(){
 
         $cache = Session::get("YNAB_BUDGETS");
+        $is_cron = Session::get("IS_CRON_RUNNING");
 
-        if(!empty($cache)){
+        if(!empty($cache) & empty($is_cron)){
             return $cache;
         }
 
@@ -163,8 +165,9 @@ class YnabAPI extends Controller
     public function budget($id){
 
         $cache = Session::get("YNAB_BUDGET_$id");
+        $is_cron = Session::get("IS_CRON_RUNNING");
 
-        if(!empty($cache)){
+        if(!empty($cache) & empty($is_cron)){
             return $cache;
         }
 
@@ -203,8 +206,9 @@ class YnabAPI extends Controller
     public function categories($budget_id, $category_id = false){
 
         $cache = Session::get("YNAB CATEGORY $budget_id $category_id");
+        $is_cron = Session::get("IS_CRON_RUNNING");
 
-        if(!empty($cache)){
+        if(!empty($cache) & empty($is_cron)){
             return $cache;
         }
 
@@ -249,8 +253,9 @@ class YnabAPI extends Controller
     public function accounts($budget_id){
 
         $cache = Session::get("YNAB Accounts $budget_id");
+        $is_cron = Session::get("IS_CRON_RUNNING");
 
-        if(!empty($cache)){
+        if(!empty($cache) & empty($is_cron)){
             return $cache;
         }
 

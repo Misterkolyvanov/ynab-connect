@@ -61,8 +61,9 @@ class HabiticaAPI extends Controller
     public function user(){
 
         $cache = Session::get("HABITICA USER");
+        $is_cron = Session::get("IS_CRON_RUNNING");
 
-        if(!empty($cache)){
+        if(!empty($cache) & empty($is_cron)){
             return $cache;
         }
 
@@ -139,9 +140,10 @@ class HabiticaAPI extends Controller
 
     public function user_tasks($task_id=false){
 
-        $cache = Session::get("HABITICA USER TASKS $task_id");
+        $cache   = Session::get("HABITICA USER TASKS $task_id");
+        $is_cron = Session::get("IS_CRON_RUNNING");
 
-        if(!empty($cache)){
+        if(!empty($cache) & empty($is_cron)){
             return $cache;
         }
 
