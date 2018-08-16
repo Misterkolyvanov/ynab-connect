@@ -114,7 +114,7 @@
                     </li>
 
                     <li>
-                        <h3>The YNAB-CONNECT Balancer</h3>
+                        <h3>The {{ config('app.name', 'Laravel') }} Balancer</h3>
                         <p>Our Balancer Tool takes your budgeted amount and zeroes
                         it out using a fake transaction (this does not affect your
                         real bank accounts at all, in fact we have no access to

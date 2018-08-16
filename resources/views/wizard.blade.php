@@ -136,7 +136,7 @@
                                 </ol>
 
                                 <p class="alert alert-info">
-                                    Next up, we recommend that you create a new “bank” account in YNAB called “YNABitica” so that the transactions made by us don’t get confused with your actual bank totals.
+                                    Next up, we recommend that you create a new “bank” account in YNAB called “{{ config('app.name', 'Laravel') }}” so that the transactions made by us don’t get confused with your actual bank totals.
                                 </p>
                             </div>
                         </div>

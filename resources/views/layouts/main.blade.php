@@ -54,7 +54,7 @@
 
     <div class="footer">
         <div class="container text-center">
-            Made with <i class="fa fa-heart heart"></i> by {{ config('app.name', 'Laravel') }}. Regular YNABBERS</a>
+            Made with <i class="fa fa-heart heart"></i> by {{ config('app.name', 'Laravel') }}.</a>
             | <a href="/terms-conditions">Terms & Conditions</a>
             | <a href="/how-it-works">How It Works</a>
             | <a href="{{ route('logout') }}"
