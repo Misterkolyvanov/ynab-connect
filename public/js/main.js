@@ -99,9 +99,9 @@ $(function(){
 
     $(document).on("click", "#run-program", function(){
         var $btn = $(this);
-        $btn.replaceWith("<span>Now Running ...</span>");
+        $btn.replaceWith("<span id='now-running-program'>Now Running ...</span>");
         $.get("/run-program", function(done){
-             $btn.replaceWith('<button type="button" class="btn btn-primary" id="run-program">Manually Run Program</button>');
+            load_system_stats();
         });
     });
 
