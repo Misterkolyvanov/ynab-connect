@@ -26,7 +26,7 @@
 <body>
 <div class="image-container set-full-height" style="background-image: url('{{ asset('img/rytsar_projects.jpg') }}')">
     <!--   Creative Tim Branding   -->
-    <a href="http://creative-tim.com">
+    <a href="/home">
         <div class="logo-container">
             <div class="logo">
                 <img src="{{ asset('img/logo.png') }}">

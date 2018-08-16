@@ -41,7 +41,8 @@
     @endif
     <p class="alert alert-info">
         Typically the program will run every 10 minutes and post transactions to your YNAB account & category selected.
-    Additionally,  your "Budgeted" amount will be balanced nightly, meaning you'r a negative transaction will offset your
-    set budget. This process is called "balancing", the Balancer negatively offsets your budget, so that you can earn it
-    back completing tasks in Habitica. Learn more here: <a href="/how-it-works">How it works ></a> </p>
+        Additionally, your "Budgeted" amount will be balanced nightly, which means EarnedTasks will create a negative
+        transaction in YNAB which will offset your budgeted amount. This process is called "balancing".
+        The Balancer negatively offsets your budget so that you can earn back the budgeted amount by
+        completing tasks in Habitica. Learn more here: <a href="/how-it-works">How it works ></a> </p>
 </div>
