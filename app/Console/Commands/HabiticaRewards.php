@@ -145,7 +145,7 @@ class HabiticaRewards extends Command
 
             //Check if its the first of the month, if so, we need to zero out the payout
             if(date("d H:i") == "01 00:00:00"){
-                $user->habitica_payout_amt;
+                $user->habitica_payout_amt = 0;
             }
 
             $user->save();
@@ -166,11 +166,18 @@ class HabiticaRewards extends Command
             //Save locally
             $user->increment('habitica_payout_amt', floor($credit));
 
-            $ynab->postTransaction( $configuration->ynab_default_account,
-                $configuration->ynab_default_budget,
-                $configuration->ynab_default_category,
-                floor($credit)
-            );
+            if(env("APP_ENV") == "local"){
+                print_r([$configuration->ynab_default_account,
+                        $configuration->ynab_default_budget,
+                        $configuration->ynab_default_category,
+                        floor($credit)]);
+            }else{
+                $ynab->postTransaction( $configuration->ynab_default_account,
+                    $configuration->ynab_default_budget,
+                    $configuration->ynab_default_category,
+                    floor($credit)
+                );
+            }
         }
     }
 }

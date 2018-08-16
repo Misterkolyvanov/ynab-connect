@@ -66,11 +66,19 @@ class Balancer extends Command
 
             print "Need to offset by ".$offset_required.PHP_EOL;
 
-            $ynab->postTransaction( $configuration->ynab_default_account,
-                                    $configuration->ynab_default_budget,
-                                    $configuration->ynab_default_category,
-                                    $offset_required
-            );
+            if(env("APP_ENV") == "local"){
+                print_r([$configuration->ynab_default_account,
+                    $configuration->ynab_default_budget,
+                    $configuration->ynab_default_category,
+                    $offset_required]);
+            }else{
+                $ynab->postTransaction( $configuration->ynab_default_account,
+                    $configuration->ynab_default_budget,
+                    $configuration->ynab_default_category,
+                    $offset_required
+                );
+            }
+
 
             $user->increment('offset_budgeted', $offset_required);
         }

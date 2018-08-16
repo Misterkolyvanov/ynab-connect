@@ -37,7 +37,7 @@
 
 <div class="col-sm-12" style="text-align: center; margin-top:20px">
     @if(!empty($ynab_user) && !empty($ynab_user->user) && !empty($habitica_user) && $habitica_user->profile->name)
-        <button type="button" class="btn btn-primary">Manually Run Program</button>
+        <button type="button" class="btn btn-primary" id="run-program">Manually Run Program</button>
     @endif
     <p class="alert alert-info">
         Typically the program will run every 10 minutes and post transactions to your YNAB account & category selected.

@@ -98,8 +98,11 @@ $(function(){
     });
 
     $(document).on("click", "#run-program", function(){
-        $(this).replaceWith("<span>Now Running ...</span>");
-        $.get("/run-program");
+        var $btn = $(this);
+        $btn.replaceWith("<span>Now Running ...</span>");
+        $.get("/run-program", function(done){
+             $btn.replaceWith('<button type="button" class="btn btn-primary" id="run-program">Manually Run Program</button>');
+        });
     });
 
 
